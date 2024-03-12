@@ -1,20 +1,25 @@
-import React, { FC, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Divider, MenuItem, Select, TextField,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { Color } from '../types';
+import { getColors } from '../services/color.service';
 
 interface Props {
-  colors: Color[];
   addUser: (name: string, carColorId: number) => void;
 }
 
-export const AddUserForm: FC<Props> = React.memo(({ colors, addUser }) => {
+export const AddUserForm: React.FC<Props> = ({ addUser }) => {
   const [name, setName] = useState('');
   const [colorId, setColorId] = useState(0);
   const [isNameError, setIsNameError] = useState(false);
   const [isColorError, setIsColorError] = useState(false);
+  const [colors, setColors] = useState<Color[]>([]);
+
+  useEffect(() => {
+    getColors().then(setColors);
+  }, []);
 
   const selectedColor = colors.find(c => c.id === colorId);
 
@@ -41,9 +46,13 @@ export const AddUserForm: FC<Props> = React.memo(({ colors, addUser }) => {
     >
       <Divider />
 
-      <div style={{
-        padding: '16px 0 16px', display: 'flex', alignItems: 'end', justifyContent: 'space-between',
-      }}
+      <div
+        style={{
+          padding: '16px 0 16px',
+          display: 'flex',
+          alignItems: 'end',
+          justifyContent: 'space-between',
+        }}
       >
         <TextField
           variant="standard"
@@ -82,13 +91,9 @@ export const AddUserForm: FC<Props> = React.memo(({ colors, addUser }) => {
           ))}
         </Select>
       </div>
-      <LoadingButton
-        type="submit"
-        variant="outlined"
-        style={{ width: '100%' }}
-      >
+      <LoadingButton type="submit" variant="outlined" style={{ width: '100%' }}>
         Add new player
       </LoadingButton>
     </form>
   );
-});
+};

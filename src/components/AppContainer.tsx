@@ -11,11 +11,9 @@ export const AppContainer: FC<Props> = React.memo(({ children }) => {
       elevation={10}
       style={{
         padding: '20px',
-        width: '30%',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        width: '90%',
+        marginTop: '40px',
+        marginInline: 'auto',
       }}
     >
       <Typography
