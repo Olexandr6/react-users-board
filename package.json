@@ -1,5 +1,5 @@
 {
-  "homepage": ".",
+  "homepage": "https://mate-academy.github.io/react-users-board",
   "name": "users_board_client",
   "version": "0.1.0",
   "dependencies": {
@@ -17,6 +17,12 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.2.4",
     "typescript-eslint-parser": "^22.0.0"
+  },
+  "devDependencies": {
+    "@mate-academy/eslint-config-react-typescript": "^0.0.4",
+    "eslint": "^7.25.0",
+    "gh-pages": "^6.1.1",
+    "node-sass": "^5.0.0"
   },
   "scripts": {
     "lint": "eslint ./src --fix",
@@ -44,11 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@mate-academy/eslint-config-react-typescript": "^0.0.4",
-    "eslint": "^7.25.0",
-    "gh-pages": "^3.1.0",
-    "node-sass": "^5.0.0"
   }
 }
